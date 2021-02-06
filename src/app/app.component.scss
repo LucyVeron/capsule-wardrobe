@@ -1,9 +1,54 @@
+@import '~@angular/material/theming';
+
 .button-toggle-group {
   margin-bottom: 1rem;
 }
 
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+mat-card {
+  @include mat-elevation(5);
+  margin: 0.5rem;
+  max-width: 150px;
+  display: flex;
+  flex-direction: column;
+  background: whitesmoke;
+  border-radius: 2px;
+  cursor: pointer;
+  @include mat-elevation-transition;
+
+  & mat-card-content {
+    margin: 0.5rem;
+  }
+
+  &:hover {
+    @include mat-elevation(10);
+    filter: brightness(1.05);
+  }
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
 .label {
   color: white;
+}
+
+.selected {
+  filter: brightness(1.5);
+
+  &-card {
+    @include mat-elevation(10);
+    filter: brightness(1.05);
+    box-shadow: 0 0 3px 1px #00c3ff !important;
+  }
 }
 
 .cool {

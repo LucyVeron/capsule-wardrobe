@@ -1,14 +1,34 @@
 <mat-vertical-stepper #stepper>
-  <mat-step [stepControl]="colorFormGroup">
-    <ng-template matStepLabel>First Step</ng-template>
-    <form class="button-toggle-group" [formGroup]="colorFormGroup">
-      <div class="label"> Skin Undertone </div>
-      <mat-button-toggle-group name="undertone">
-        <mat-button-toggle *ngFor="let color of colors" class="{{color}}" value="{{color}}">
+  <mat-step>
+    <ng-template matStepLabel>Skin Undertone</ng-template>
+    <div class="button-toggle-group">
+      <mat-button-toggle-group #group="matButtonToggleGroup" (change)="selectedColor=group.value">
+        <mat-button-toggle *ngFor="let color of colors" class="{{color}}" value="{{color}}"
+          [ngClass]="{'selected': group.value === color}">
           {{color}}
         </mat-button-toggle>
       </mat-button-toggle-group>
-    </form>
+      <div *ngIf="selectedColor">{{selectedColor}}</div>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Style</ng-template>
+    <div class="cards">
+      <mat-card matRipple *ngFor="let style of styles" (click)="selectedStyle=style.name"
+        [ngClass]="{'selected-card': selectedStyle === style.name}">
+        <img matRipple mat-card-image src="{{style.path}}" alt="{{style.name}}">
+        <mat-card-content>
+          <p>
+            <strong>{{style.name}}</strong>
+            <br>
+            <small>{{style.credit}}</small>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
     <div>
       <button mat-raised-button color="primary" matStepperNext>Next</button>
     </div>
