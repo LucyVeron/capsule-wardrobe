@@ -53,10 +53,6 @@ mat-card {
   color: white;
 }
 
-.label {
-  color: white;
-}
-
 .buttons button {
   margin: 0 0.5rem;
 }
@@ -64,17 +60,17 @@ mat-card {
 .selected {
   &-button {
     filter: brightness(1.6);
-    box-shadow: 0 0 3px 1px #00c3ff inset !important;
+    box-shadow: 0 0 3px 1px #00c3ff inset;
   }
 
   &-card {
     @include mat-elevation(10);
-    box-shadow: 0 0 6px 1px #00c3ff !important;
+    box-shadow: 0 0 6px 1px #00c3ff;
   }
 
   &-icon {
     filter: brightness(1.9);
-    box-shadow: 0 0 3px 0 #00c3ff inset !important;
+    box-shadow: 0 0 3px 0 #00c3ff inset;
   }
 }
 
