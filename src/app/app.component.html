@@ -2,13 +2,12 @@
   <mat-step>
     <ng-template matStepLabel>Skin Undertone</ng-template>
     <div class="button-toggle-group">
-      <mat-button-toggle-group #group="matButtonToggleGroup" (change)="selectedColor=group.value">
-        <mat-button-toggle *ngFor="let color of colors" class="{{color}}" value="{{color}}"
-          [ngClass]="{'selected': group.value === color}">
+      <mat-button-toggle-group>
+        <mat-button-toggle *ngFor="let color of colors" (click)="selectedColor=color" class="{{color}}"
+          value="{{color}}" [ngClass]="{'selected-button': selectedColor === color}">
           {{color}}
         </mat-button-toggle>
       </mat-button-toggle-group>
-      <div *ngIf="selectedColor">{{selectedColor}}</div>
     </div>
     <div>
       <button mat-raised-button color="primary" matStepperNext>Next</button>
@@ -29,8 +28,34 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <div>
+    <div class="buttons">
+      <button mat-raised-button color="primary" matStepperPrevious>Back</button>
       <button mat-raised-button color="primary" matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Season</ng-template>
+    <div class="icons">
+      <button mat-fab color="warn" [ngClass]="{'selected-icon': season==='spring-summer'}"
+        (click)="season='spring-summer'">
+        <mat-icon>beach_access</mat-icon>
+      </button>
+      <button mat-fab color="accent" [ngClass]="{'selected-icon': season==='fall-winter'}"
+        (click)="season='fall-winter'">
+        <mat-icon>ac_unit</mat-icon>
+      </button>
+    </div>
+    <div class="buttons">
+      <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+      <button mat-raised-button color="primary" matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <h1>👔 👕 👖 👗 👘 👙 👚 All Done 👛 👜 👝 👞 👟 👠 👢</h1>
+    <div class="buttons">
+      <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+      <button mat-raised-button color="warn" (click)="reset(stepper)">RESET</button>
     </div>
   </mat-step>
 </mat-vertical-stepper>

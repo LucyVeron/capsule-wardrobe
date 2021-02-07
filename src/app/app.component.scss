@@ -1,5 +1,15 @@
 @import '~@angular/material/theming';
 
+h1 {
+  color: white;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
 .button-toggle-group {
   margin-bottom: 1rem;
 }
@@ -12,6 +22,7 @@
 
 mat-card {
   @include mat-elevation(5);
+  @include mat-elevation-transition;
   margin: 0.5rem;
   max-width: 150px;
   display: flex;
@@ -19,7 +30,6 @@ mat-card {
   background: whitesmoke;
   border-radius: 2px;
   cursor: pointer;
-  @include mat-elevation-transition;
 
   & mat-card-content {
     margin: 0.5rem;
@@ -31,23 +41,40 @@ mat-card {
   }
 }
 
-img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
+.icons {
+  margin-bottom: 1rem;
+
+  & button {
+    margin: 0.5rem;
+  }
+}
+
+.mat-button {
+  color: white;
 }
 
 .label {
   color: white;
 }
 
+.buttons button {
+  margin: 0 0.5rem;
+}
+
 .selected {
-  filter: brightness(1.5);
+  &-button {
+    filter: brightness(1.6);
+    box-shadow: 0 0 3px 1px #00c3ff inset !important;
+  }
 
   &-card {
     @include mat-elevation(10);
-    filter: brightness(1.05);
-    box-shadow: 0 0 3px 1px #00c3ff !important;
+    box-shadow: 0 0 6px 1px #00c3ff !important;
+  }
+
+  &-icon {
+    filter: brightness(1.9);
+    box-shadow: 0 0 3px 0 #00c3ff inset !important;
   }
 }
 

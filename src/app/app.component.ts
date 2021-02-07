@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +16,13 @@ export class AppComponent {
     {name: 'VINTAGE', credit: 'Photo by Labskiii from Pexels', path: '../assets/images/vintage.jpg'}
   ];
   public selectedStyle: string;
-  public colorFormGroup: FormGroup;
+  public season: string;
 
-  constructor() {}
+  public reset(stepper: MatStepper): void {
+    this.selectedColor = undefined;
+    this.selectedStyle = undefined;
+    this.season = undefined;
+    stepper.reset();
+  }
 
 }
